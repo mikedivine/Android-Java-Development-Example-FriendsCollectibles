@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".item.ViewItems"
-    android:background="@drawable/gradient_background"
-    >
+    tools:context=".admin.SalesReport"
+    android:background="@drawable/gradient_background">
 
     <Button
         android:id="@+id/goBack"
@@ -18,21 +17,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:fabSize="normal"
-        app:maxImageSize="48dp"
-        android:src="@drawable/ic_baseline_add_48"
-        android:contentDescription="@string/adduser"
-        android:layout_margin="16dp" />
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/items"
+        android:id="@+id/salesReport"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

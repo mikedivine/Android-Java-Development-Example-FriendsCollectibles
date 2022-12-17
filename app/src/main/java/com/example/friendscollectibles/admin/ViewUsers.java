@@ -14,13 +14,18 @@ import com.example.friendscollectibles.R;
 import com.example.friendscollectibles.RegisterActivity;
 import com.example.friendscollectibles.db.AppDatabase;
 import com.example.friendscollectibles.db.FriendsCollectiblesDAO;
+import com.example.friendscollectibles.item.EditItem;
+import com.example.friendscollectibles.item.Item;
+import com.example.friendscollectibles.item.SelectListener;
+import com.example.friendscollectibles.item.ViewItems;
+import com.example.friendscollectibles.user.PurchaseHistory;
 import com.example.friendscollectibles.user.User;
 import com.example.friendscollectibles.user.UsersAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
-public class ViewUsers extends AppCompatActivity {
+public class ViewUsers extends AppCompatActivity implements UsersSelectListener {
 
   Button goBack;
   FloatingActionButton addUser;
@@ -53,12 +58,8 @@ public class ViewUsers extends AppCompatActivity {
     FriendsCollectiblesDAO friendsCollectiblesDAO = appDatabase.friendsCollectiblesDAO();
 
     List<User> allUsers = friendsCollectiblesDAO.getAllUsers();
-    UsersAdapter adapter = new UsersAdapter(allUsers,this);
+    UsersAdapter adapter = new UsersAdapter(allUsers,this,this);
 
-    RecyclerView.ItemDecoration itemDecoration = new
-    DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
-
-    rvUsers.addItemDecoration(itemDecoration);
     rvUsers.setAdapter(adapter);
     rvUsers.setLayoutManager(new LinearLayoutManager(this));
   }
@@ -72,19 +73,27 @@ public class ViewUsers extends AppCompatActivity {
     FriendsCollectiblesDAO friendsCollectiblesDAO = appDatabase.friendsCollectiblesDAO();
 
     List<User> allUsers = friendsCollectiblesDAO.getAllUsers();
-    UsersAdapter adapter = new UsersAdapter(allUsers,this);
+    UsersAdapter adapter = new UsersAdapter(allUsers,this,this);
 
-    RecyclerView.ItemDecoration itemDecoration = new
-        DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
-
-    rvUsers.addItemDecoration(itemDecoration);
     rvUsers.setAdapter(adapter);
     rvUsers.setLayoutManager(new LinearLayoutManager(this));
-
   }
 
   private void openRegisterActivity() {
     Intent intent = new Intent(this, RegisterActivity.class);
     startActivity(intent);
+  }
+
+  @Override
+  public void onUserClicked(User user) {
+
+    openViewUser(user);
+  }
+
+  public void openViewUser(User user) {
+    Integer userID = user.getUserID();
+    Intent i = new Intent(ViewUsers.this, PurchaseHistory.class);
+    i.putExtra("userID",userID);
+    startActivity(i);
   }
 }

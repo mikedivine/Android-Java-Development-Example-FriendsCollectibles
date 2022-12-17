@@ -12,4 +12,5 @@
     <string name="adduser">addUser</string>
     <string name="go_back">Go Back</string>
     <string name="item_image">item image</string>
+    <string name="title">title</string>
 </resources>

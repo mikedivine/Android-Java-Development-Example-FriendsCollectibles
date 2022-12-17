@@ -33,6 +33,9 @@ public interface FriendsCollectiblesDAO {
   @Query("SELECT * FROM " + AppDatabase.USER_TABLE + " WHERE username=(:username) and password=(:password)")
   User getUser(String username, String password);
 
+  @Query("SELECT * FROM " + AppDatabase.USER_TABLE + " WHERE userID=(:userID)")
+  User getUser(Integer userID);
+
   @Query("SELECT * FROM " + AppDatabase.USER_TABLE)
   List<User> getAllUsers();
 
@@ -45,8 +48,8 @@ public interface FriendsCollectiblesDAO {
   @Delete
   void deleteItem(Item item);
 
-  @Query("SELECT * FROM " + AppDatabase.ITEM_TABLE + " WHERE prodName=(:prodName) and price=(:price)")
-  Item getItem(String prodName, double price);
+  @Query("SELECT * FROM " + AppDatabase.ITEM_TABLE + " WHERE itemID=(:itemID)")
+  Item getItem(Integer itemID);
 
   @Query("SELECT * FROM " + AppDatabase.ITEM_TABLE)
   List<Item> getAllItems();

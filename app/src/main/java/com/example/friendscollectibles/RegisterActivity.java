@@ -15,6 +15,8 @@ import com.example.friendscollectibles.db.AppDatabase;
 import com.example.friendscollectibles.db.FriendsCollectiblesDAO;
 import com.example.friendscollectibles.user.User;
 
+import java.util.ArrayList;
+
 public class RegisterActivity extends AppCompatActivity {
 
   EditText userName, password;
@@ -58,16 +60,25 @@ public class RegisterActivity extends AppCompatActivity {
       @Override
       public void onClick(View view) {
 
+        ArrayList<Integer> itemIds = new ArrayList<>();
+        ArrayList<Integer> itemQty = new ArrayList<>();
+        itemIds.add(0);
+        itemQty.add(0);
+
         final User friendsCollectibles = new User();
         friendsCollectibles.setUsername(userName.getText().toString());
         friendsCollectibles.setPassword(password.getText().toString());
         friendsCollectibles.setAdmin(makeAdmin.isChecked());
+        friendsCollectibles.setItems(itemIds);
+        friendsCollectibles.setItemQty(itemQty);
+
 
         if (checkInput(friendsCollectibles)) {
           AppDatabase appDatabase = AppDatabase.getAppDatabase(getApplicationContext());
           FriendsCollectiblesDAO friendsCollectiblesDAO = appDatabase.friendsCollectiblesDAO();
           friendsCollectiblesDAO.insertUser(friendsCollectibles);
           Toast.makeText(getApplicationContext(),"User " + friendsCollectibles.getUsername() + " successfully registered.", Toast.LENGTH_SHORT).show();
+          finish();
 
         } else {
           Toast.makeText(getApplicationContext(),"Make sure username and password have been entered.", Toast.LENGTH_SHORT).show();

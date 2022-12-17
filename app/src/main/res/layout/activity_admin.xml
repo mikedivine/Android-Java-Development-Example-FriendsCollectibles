@@ -23,16 +23,29 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:contentDescription="Friends Frame"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/centralperk" />
 
     <TextView
         android:id="@+id/textViewWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:minWidth="300dp"
         android:minHeight="40dp"
-        android:text="no input"
+        android:text="Welcome!"
         android:textAlignment="center"
         app:autoSizeMaxTextSize="64sp"
         app:autoSizeMinTextSize="32sp"
@@ -41,13 +54,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView" />
+        app:layout_constraintTop_toBottomOf="@id/logo" />
 
     <TextView
         android:id="@+id/textViewRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:minWidth="300dp"
         android:minHeight="40dp"
         android:text="Admin Screen"
@@ -59,7 +72,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewWelcome" />
+        app:layout_constraintTop_toBottomOf="@id/textViewWelcome"
+        android:visibility="gone"/>
 
     <Button
         android:id="@+id/ViewStore"
@@ -70,45 +84,68 @@
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewRegister" />
+        app:layout_constraintTop_toBottomOf="@id/textViewRegister"
+        android:visibility="gone"/>
 
 
     <Button
         android:id="@+id/viewUsers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Edit/View Users"
+        android:layout_marginTop="15dp"
+        android:text="Users"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ViewStore" />
+        app:layout_constraintTop_toBottomOf="@id/textViewRegister" />
 
 
     <Button
         android:id="@+id/editItems"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Edit/View Items"
-        android:layout_marginTop="28dp"
+        android:text="Items"
+        android:layout_marginTop="15dp"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewUsers" />
 
+    <Button
+        android:id="@+id/itemsReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Items Report"
+        android:layout_marginTop="15dp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editItems" />
+
+    <Button
+        android:id="@+id/salesReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sales Report"
+        android:layout_marginTop="15dp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemsReport" />
 
     <Button
         android:id="@+id/logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="15dp"
         android:text="Logout"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editItems" />
+        app:layout_constraintTop_toBottomOf="@id/salesReport" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,9 +2,15 @@ package com.example.friendscollectibles.user;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
 import com.example.friendscollectibles.db.AppDatabase;
+import com.example.friendscollectibles.item.Converters;
+import com.example.friendscollectibles.item.Item;
+
+import java.util.ArrayList;
 
 /**
  * Title: Users
@@ -14,6 +20,7 @@ import com.example.friendscollectibles.db.AppDatabase;
  */
 
 @Entity(tableName = AppDatabase.USER_TABLE)
+@TypeConverters({Converters.class})
 public class User {
 
   @PrimaryKey(autoGenerate = true)
@@ -27,6 +34,28 @@ public class User {
 
   @ColumnInfo(name = "isAdmin")
   Boolean isAdmin;
+
+  @ColumnInfo(name = "items")
+  ArrayList<Integer> items;
+
+  @ColumnInfo(name = "itemQty")
+  ArrayList<Integer> itemQty;
+
+  public ArrayList<Integer> getItems() {
+    return items;
+  }
+
+  public void setItems(ArrayList<Integer> items) {
+    this.items = items;
+  }
+
+  public ArrayList<Integer> getItemQty() {
+    return itemQty;
+  }
+
+  public void setItemQty(ArrayList<Integer> itemQty) {
+    this.itemQty = itemQty;
+  }
 
   public Integer getUserID() {
     return userID;

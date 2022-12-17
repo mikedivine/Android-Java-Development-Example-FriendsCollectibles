@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    tools:context=".item.AddItem">
+
+
+
+    <EditText
+        android:id="@+id/editItemTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:minWidth="300dp"
+        android:minHeight="40dp"
+        android:hint="Item Title"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        app:autoSizeTextType="uniform"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/itemImage2"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="50dp"
+        android:contentDescription="Friends Frame"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editItemTitle"
+        app:srcCompat="@drawable/ic_baseline_pedal_bike_150"
+        />
+
+
+
+    <EditText
+        android:id="@+id/editItemDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:minWidth="300dp"
+        android:minHeight="40dp"
+        android:hint="Item Description"
+        android:textAlignment="center"
+        app:autoSizeMaxTextSize="16sp"
+        app:autoSizeMinTextSize="8sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemImage2"
+        />
+
+    <EditText
+        android:id="@+id/editItemPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:minWidth="100dp"
+        android:minHeight="30dp"
+        android:hint="Item Price"
+        android:textAlignment="center"
+        app:autoSizeMaxTextSize="16sp"
+        app:autoSizeMinTextSize="8sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toStartOf="@id/editItemQty"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editItemDescription"
+        />
+
+    <EditText
+        android:id="@+id/editItemQty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:minWidth="100dp"
+        android:minHeight="30dp"
+        android:hint="Qty"
+        android:textAlignment="center"
+        app:autoSizeMaxTextSize="16sp"
+        app:autoSizeMinTextSize="8sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/editItemPrice"
+        app:layout_constraintTop_toBottomOf="@+id/editItemDescription"
+        />
+
+    <Button
+        android:id="@+id/goBack2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Go Back"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toStartOf="@+id/addItem"
+        app:layout_constraintHorizontal_bias=".5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editItemPrice"
+        />
+
+    <Button
+        android:id="@+id/addItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Add Item"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/goBack2"
+        app:layout_constraintTop_toBottomOf="@+id/editItemPrice"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

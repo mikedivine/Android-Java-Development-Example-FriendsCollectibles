@@ -8,62 +8,50 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.friendscollectibles.R;
+import com.example.friendscollectibles.admin.UsersSelectListener;
+import com.example.friendscollectibles.admin.ViewUsersViewHolder;
 import com.example.friendscollectibles.db.AppDatabase;
 import com.example.friendscollectibles.db.FriendsCollectiblesDAO;
+import com.example.friendscollectibles.item.CustomViewHolder;
+import com.example.friendscollectibles.item.SelectListener;
 
 import java.util.List;
 
-public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> {
+public class UsersAdapter extends RecyclerView.Adapter<ViewUsersViewHolder> {
 
-  public class ViewHolder extends RecyclerView.ViewHolder {
-
-    public TextView username;
-    public Button deleteUser;
-    ImageView isAdmin;
-
-    // We also create a constructor that accepts the entire item row
-    // and does the view lookups to find each subview
-    public ViewHolder(View itemView) {
-      // Stores the itemView in a public final member variable that can be used
-      // to access the context from any ViewHolder instance.
-      super(itemView);
-
-      username = (TextView) itemView.findViewById(R.id.username);
-      deleteUser = (Button) itemView.findViewById(R.id.deleteUser);
-      isAdmin = (ImageView) itemView.findViewById(R.id.isAdmin);
-
-    }
-  }
-
+  public TextView username;
+  public Button deleteUser;
+  ImageView isAdmin;
   private List<User> mUsers;
   private Context context;
+  private UsersSelectListener listener;
 
-  // Pass in the contact array into the constructor
-  public UsersAdapter(List<User> users, Context context) {
+  public UsersAdapter(List<User> users, Context context, UsersSelectListener listener) {
     mUsers = users;
     this.context = context;
+    this.listener = listener;
   }
 
+  @NonNull
   @Override
-  public UsersAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+  public ViewUsersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     Context context = parent.getContext();
     LayoutInflater inflater = LayoutInflater.from(context);
 
-    // Inflate the custom layout
     View usersView = inflater.inflate(R.layout.users_layout, parent, false);
 
-    // Return a new holder instance
-    ViewHolder viewHolder = new ViewHolder(usersView);
+    ViewUsersViewHolder viewHolder = new ViewUsersViewHolder(usersView);
     return viewHolder;
   }
 
   // Involves populating data into the item through holder
   @Override
-  public void onBindViewHolder(UsersAdapter.ViewHolder holder, int position) {
-    // Get the data model based on position
+  public void onBindViewHolder(@NonNull ViewUsersViewHolder holder, int position) {
+
     User user = mUsers.get(position);
     ImageView isAdmin = holder.isAdmin;
 
@@ -72,7 +60,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> 
     } else {
       isAdmin.setImageResource(R.drawable.ic_baseline_person_24);
     }
-    // Set item views based on your views and data model
+
     TextView textView = holder.username;
     textView.setText(user.getUsername());
     Button button = holder.deleteUser;
@@ -89,9 +77,15 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> 
         notifyItemRemoved(holder.getAdapterPosition()); // update RecyclerView
       }
     });
+
+    holder.cardView.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        listener.onUserClicked(mUsers.get(holder.getAdapterPosition()));
+      }
+    });
   }
 
-  // Returns the total count of items in the list
   @Override
   public int getItemCount() {
     return mUsers.size();
